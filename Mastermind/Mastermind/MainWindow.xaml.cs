@@ -13,46 +13,39 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Mastermind
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    private List<string> colors = new List<string> { "Rood", "Geel", "Oranje", "Wit", "Groen", "Blauw" };
+    private List<string> secretCode = new List<string>();
+
+    public MainWindow()
     {
-        private List<string> colors = new List<string> { "Rood", "Geel", "Oranje", "Wit", "Groen", "Blauw" };
-        private List<string> Geheimecode = new List<string>();
+        GenerateSecretCode();
+        FillComboBoxes();
+    }
 
-        public MainWindow()
+    private void GenerateSecretCode()
+    {
+        Random random = new Random();
+        secretCode.Clear();
+
+        for (int i = 0; i < 4; i++)
         {
-            InitializeComponent();
-            GenereerGeheimeCode();
-            FillComboBoxes();
+            secretCode.Add(colors[random.Next(colors.Count)]);
         }
-        
-        private void GenereerGeheimeCode()
+
+        // Toon de geheime code in de titel voor testdoeleinden
+        this.Title = "Mastermind - Code: " + string.Join(", ", secretCode);
+    }
+
+    private void FillComboBoxes()
+    {
+        var comboBoxes = new List<ComboBox> { ComboBox1, ComboBox2, ComboBox3, ComboBox4 };
+
+        foreach (var comboBox in comboBoxes)
         {
-            Random random = new Random();
-            Geheimecode.Clear();
-
-            for (int i = 0; i < 4; i++)
-            {
-                Geheimecode.Add(colors[random.Next(colors.Count)]);
-            }
-
-            this.Title = "Mastermind - Code: " + string.Join(", ", Geheimecode);
-        }
-        
-        private void FillComboBoxes()
-        {
-            var Comboboxes = new List<ComboBox> { Kleurcode1, Kleurcode2, Kleurcode3, Kleurcode4 };
-             
-            foreach (var combobox in Comboboxes)
-            {
-                combobox.ItemsSource = colors;
-                combobox.SelectedIndex = -1;
-            }
-
+            comboBox.ItemsSource = colors;
+            comboBox.SelectedIndex = -1; // Leeg laten in het begin
         }
     }
 }
