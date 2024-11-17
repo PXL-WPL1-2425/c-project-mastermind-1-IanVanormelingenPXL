@@ -20,9 +20,39 @@ namespace Mastermind
     /// </summary>
     public partial class MainWindow : Window
     {
+        private List<string> colors = new List<string> { "Rood", "Geel", "Oranje", "Wit", "Groen", "Blauw" };
+        private List<string> Geheimecode = new List<string>();
+
         public MainWindow()
         {
             InitializeComponent();
+            GenereerGeheimeCode();
+            FillComboBoxes();
+        }
+        
+        private void GenereerGeheimeCode()
+        {
+            Random random = new Random();
+            Geheimecode.Clear();
+
+            for (int i = 0; i < 4; i++)
+            {
+                Geheimecode.Add(colors[random.Next(colors.Count)]);
+            }
+
+            this.Title = "Mastermind - Code: " + string.Join(", ", Geheimecode);
+        }
+        
+        private void FillComboBoxes()
+        {
+            var Comboboxes = new List<ComboBox> { Kleurcode1, Kleurcode2, Kleurcode3, Kleurcode4 };
+             
+            foreach (var combobox in Comboboxes)
+            {
+                combobox.ItemsSource = colors;
+                combobox.SelectedIndex = -1;
+            }
+
         }
     }
 }
