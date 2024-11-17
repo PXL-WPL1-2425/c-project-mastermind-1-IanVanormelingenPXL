@@ -34,18 +34,42 @@ public partial class MainWindow : Window
             secretCode.Add(colors[random.Next(colors.Count)]);
         }
 
-        // Toon de geheime code in de titel voor testdoeleinden
+        
         this.Title = "Mastermind - Code: " + string.Join(", ", secretCode);
     }
 
     private void FillComboBoxes()
     {
-        var comboBoxes = new List<ComboBox> { ComboBox1, ComboBox2, ComboBox3, ComboBox4 };
+        var comboBoxes = new List<ComboBox> { Kleurcode1, Kleurcode2, Kleurcode3, Kleurcode4 };
 
         foreach (var comboBox in comboBoxes)
         {
             comboBox.ItemsSource = colors;
-            comboBox.SelectedIndex = -1; // Leeg laten in het begin
+            comboBox.SelectedIndex = -1; 
         }
     }
+    
+    private void ComboBox_selectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        var comboBox = sender as ComboBox;
+        if (comboBox != null && comboBox != null)
+        {
+            int labels = new List<Label> { Kleur1, Kleur2, Kleur3, Kleur4 };
+            labels[index].Content = comboBox.SelectedItem.ToString();
+            labels[index].Borderbrush = Brushes.Gray;
+            labels[index].Background = colors.Count;
+        }
+
+    }
+
+    private int GetComboboxIndex(ComboBox comboBox)
+    {
+        if (comboBox == Kleurcode1) return 0;
+        if (comboBox == Kleurcode2) return 1;
+        if (comboBox == Kleurcode3) return 2;
+        if (comboBox == Kleurcode4) return 3;
+        return -1;
+    }
+    private void
+
 }

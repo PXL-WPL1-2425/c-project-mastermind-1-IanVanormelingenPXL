@@ -17,8 +17,8 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
             <Label x:Name="Kleur1" Width="150" Height="100" BorderThickness="2" BorderBrush="Gray" />
             <Label x:Name="Kleur2" Width="150" Height="100" BorderThickness="2" BorderBrush="Gray" />
-            <Label x:Name="Kleur3" Width="150" Height="100" BorderThickness="2" BorderBrush="Gray"/>
-            <Label x:Name="Kleur4" Width="150" Height="100" BorderThickness="2" BorderBrush="Gray"/>
+            <Label x:Name="Kleur3" Width="150" Height="100" BorderThickness="2" BorderBrush="Gray" />
+            <Label x:Name="Kleur4" Width="150" Height="100" BorderThickness="2" BorderBrush="Gray" />
         </StackPanel>
 
         <Button Content="Check code" HorizontalAlignment="Center" VerticalAlignment="Top" Width="500" Height="100" FontSize="24" FontFamily="Power Green"/>
